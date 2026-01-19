@@ -1,0 +1,17 @@
+:root {
+    --primary-color: red;
+    --secondary-color: darkred;
+    --text-color: gold;
+}
+
+body {
+    font-family: "Times New Roman";
+}
+
+.heading {
+    padding: 35px;
+    background-color: var(--primary-color);
+    font-size: 64px;
+    color: var(--text-color);
+    text-align: center;
+}
