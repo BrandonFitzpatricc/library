@@ -15,3 +15,16 @@ body {
     color: var(--text-color);
     text-align: center;
 }
+
+.book-container {
+    padding: 25px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 275px);
+    justify-content: center;
+    gap: 25px;
+
+    & .book {
+        background-color: var(--primary-color);
+        height: 325px;
+    }
+}
