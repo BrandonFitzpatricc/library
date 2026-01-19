@@ -163,12 +163,10 @@ summary {
 }
 
 /*
-1. Increase line height to make text more readable
-2. Improve text rendering on macOS
+1. Improve text rendering on macOS
 */
 
 body {
-  line-height: 1.5; /* 1 */
   -webkit-font-smoothing: antialiased; /* 2 */
 }
 

@@ -1,7 +1,8 @@
 :root {
-    --primary-color: red;
-    --secondary-color: darkred;
-    --text-color: gold;
+    --red-primary: red;
+    --red-secondary: darkred;
+    --gold-primary: gold;
+    --gold-secondary: goldenrod;
 }
 
 body {
@@ -10,9 +11,9 @@ body {
 
 .heading {
     padding: 35px;
-    background-color: var(--primary-color);
+    background-color: var(--red-primary);
     font-size: 64px;
-    color: var(--text-color);
+    color: var(--gold-primary);
     text-align: center;
 }
 
@@ -21,10 +22,50 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, 275px);
     justify-content: center;
-    gap: 25px;
+    gap: 50px 125px;
 
     & .book {
-        background-color: var(--primary-color);
         height: 325px;
+        background-color: var(--red-primary);
+        border-left: 45px solid var(--red-secondary);
+        border-radius: 0px 15px 15px 0;
+        text-align: center;
+        color: var(--gold-primary);
+        position: relative;
+
+        & .title {
+            margin-top: 45px;
+            font-size: 48px;
+        }
+
+        & .author {
+            font-size: 36px;
+            margin-bottom: 25px;
+        }
+
+        & .pages {
+            font-size: 32px;
+        }
+
+        & .btn {
+            background: center/50px no-repeat var(--gold-primary);
+            padding: 30px 45px;
+            border-left: none;
+            border-color: var(--gold-secondary);
+            position: absolute;
+            cursor: pointer;
+        }
+
+        & .read-status-btn {
+            background-image: url("../icons/book-read.svg");
+            bottom: 200px;
+            left: 230px;
+        }
+
+        & .remove-btn {
+            background-image: url("../icons/remove-book.svg");
+            bottom: 100px;
+            left: 230px;
+        }
     }
 }
