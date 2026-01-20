@@ -18,7 +18,7 @@ body {
 }
 
 .book-container {
-    padding: 25px;
+    padding: 25px 25px 50px 25px;
     display: grid;
     grid-template-columns: repeat(auto-fit, 275px);
     justify-content: center;
@@ -47,8 +47,8 @@ body {
             font-size: 32px;
         }
 
-        & .btn {
-            background: center/50px no-repeat var(--gold-primary);
+        & .book-btn {
+            background: center / 50px no-repeat var(--gold-primary);
             padding: 30px 45px;
             border-left: none;
             border-color: var(--gold-secondary);
@@ -68,4 +68,18 @@ body {
             left: 230px;
         }
     }
+
+}
+
+.add-book-btn {
+    background: url("../icons/add-book-outline.svg") left 15px center / 42px no-repeat;
+    font-size: 32px;
+    text-align: right;
+    width: 225px;
+    padding: 10px 25px 10px 0px;
+    border-radius: 20px;
+    background-color: white;
+    position: sticky;
+    bottom: 25px;
+    left: 1650px;
 }
