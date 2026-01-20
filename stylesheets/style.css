@@ -79,7 +79,90 @@ body {
     padding: 10px 25px 10px 0px;
     border-radius: 20px;
     background-color: white;
-    position: sticky;
+    cursor: pointer;
+    position: fixed;
     bottom: 25px;
     left: 1650px;
+}
+
+.add-book-dialog {
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 600px;
+    height: 625px;
+    position: fixed;
+    bottom: 125px;
+    left: 650px;
+
+    & .add-book-form {
+        padding: 35px 0;
+        text-align: center;
+
+        & > div {
+            margin-bottom: 40px;
+        }
+
+        & .form-title {
+            font-size: 45px;
+        }
+
+        & .field {
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            & > label {
+                width: 125px;
+                font-size: 32px;
+                text-align: left;
+
+                &[for="read-status"] {
+                    width: 280px;
+                }
+            }
+
+            & > input {
+                &[type="text"], &[type="number"] {
+                    width: 80%;
+                    border: 1px solid black;
+                    border-radius: 10px;
+                    padding: 9px 15px;
+                }
+
+                &[type="checkbox"] {
+                    appearance: none;
+                    width: 35px;
+                    height: 35px;
+                    border: 1px solid black;
+                    margin-right: 180px;
+                    position: relative;
+
+                    &:checked::before {
+                        content: "✔";
+                        font-size: 30px;
+                        position: absolute;
+                        left: 5px;
+                    }
+                }
+            }
+        }
+
+        & .add-book-btn {
+            position: static;
+        }
+
+        & .close-btn {
+            background: url("../icons/close-box-outline.svg") center / 45px no-repeat;
+            padding: 18px;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            bottom: 575px;
+            left: 550px;
+        }
+    }
 }
