@@ -7,6 +7,7 @@
     --beige-secondary: hsl(34, 78%, 72%);
     --brown: hsl(34, 78%, 40%);
 
+    --brown-border: 3px solid var(--brown);
     --box-shadow-size: 3px 5px 5px;
 }
 
@@ -56,11 +57,15 @@ body {
 
         & .book-btn {
             background: center / 50px no-repeat var(--gold-primary);
-            padding: 30px 45px;
+            padding: 30px 35px;
             border-left: none;
             border: 2px solid var(--gold-secondary);
             position: absolute;
             cursor: pointer;
+
+            &:hover {
+                padding-right: 60px
+            }
         }
 
         & .read-status-btn {
@@ -86,17 +91,25 @@ body {
     padding: 10px 25px 10px 0;
     border-radius: 20px;
     color: var(--brown);
-    border: 1px solid var(--brown);
+    border: var(--brown-border);;
     box-shadow:  var(--box-shadow-size) var(--brown);
     cursor: pointer;
     position: fixed;
     bottom: 25px;
     left: 1650px;
+
+    &:hover {
+        background-color: var(--beige-primary);
+    }
+
+    &:active {
+        box-shadow: inset var(--box-shadow-size) var(--beige-secondary);
+    }
 }
 
 .add-book-dialog {
     background-color: var(--beige-secondary);
-    border: 3px solid var(--brown);
+    border: var(--brown-border);;
     border-radius: 10px;
     width: 600px;
     height: 625px;
@@ -138,13 +151,17 @@ body {
 
             & > input {
                 background-color: var(--beige-primary);
-                border: 1px solid var(--brown);
+                border: var(--brown-border);;
                 box-shadow:  var(--box-shadow-size) var(--brown);
 
                 &[type="text"], &[type="number"] {
                     width: 80%;
                     border-radius: 10px;
                     padding: 9px 15px;
+
+                    &:focus {
+                        outline: 1px solid var(--brown);
+                    }
                 }
 
                 &[type="checkbox"] {
@@ -169,6 +186,14 @@ body {
             position: static;
             background-color: var(--beige-primary);
             background-image: url("../icons/add-book-outline.svg");
+
+            &:hover {
+                background-color: var(--beige-secondary);
+            }
+
+            &:active {
+                box-shadow: inset var(--box-shadow-size) var(--brown);
+            }
         }
 
         & .close-btn {
