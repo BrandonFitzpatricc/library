@@ -42,11 +42,13 @@ body {
         position: relative;
 
         & .title {
+            font-weight: bold;
             margin-top: 45px;
             font-size: 48px;
         }
 
         & .author {
+            font-weight: bold;
             font-size: 36px;
             margin-bottom: 25px;
         }
