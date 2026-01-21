@@ -58,7 +58,7 @@ body {
             background: center / 50px no-repeat var(--gold-primary);
             padding: 30px 45px;
             border-left: none;
-            border-color: var(--gold-secondary);
+            border: 2px solid var(--gold-secondary);
             position: absolute;
             cursor: pointer;
         }
@@ -66,13 +66,13 @@ body {
         & .read-status-btn {
             background-image: url("../icons/book-read.svg");
             bottom: 200px;
-            left: 235px;
+            left: 232.5px;
         }
 
         & .remove-btn {
             background-image: url("../icons/remove-book.svg");
             bottom: 100px;
-            left: 235px;
+            left: 232.5px;
         }
     }
 
