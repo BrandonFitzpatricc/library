@@ -25,7 +25,7 @@ body {
 }
 
 .book-container {
-    padding: 25px 25px 75px 25px;
+    padding: 25px 50px 100px 25px;
     display: grid;
     grid-template-columns: repeat(auto-fit, 275px);
     justify-content: center;
@@ -97,8 +97,8 @@ body {
     box-shadow:  var(--box-shadow-size) var(--brown);
     cursor: pointer;
     position: fixed;
+    right: 25px;
     bottom: 25px;
-    left: 1650px;
 
     &:hover {
         background-color: var(--beige-primary);
@@ -115,10 +115,9 @@ body {
     border-radius: 10px;
     width: 600px;
     height: 625px;
-    position: fixed;
-    bottom: 125px;
-    left: 650px;
     box-shadow:  var(--box-shadow-size) var(--brown);
+    justify-self: center;
+    align-self: center;
 
     & .add-book-form {
         color: var(--brown);
@@ -168,8 +167,8 @@ body {
 
                 &[type="checkbox"] {
                     appearance: none;
-                    width: 35px;
-                    height: 35px;
+                    min-width: 35px;
+                    min-height: 35px;
                     margin-right: 180px;
                     position: relative;
 
@@ -178,7 +177,7 @@ body {
                         color: var(--brown);
                         font-size: 30px;
                         position: absolute;
-                        left: 5px;
+                        left: 3px;
                     }
                 }
             }
@@ -204,8 +203,8 @@ body {
             border: none;
             cursor: pointer;
             position: absolute;
-            bottom: 575px;
-            left: 550px;
+            top: 10px;
+            right: 10px;
         }
     }
 }
