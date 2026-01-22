@@ -8,6 +8,10 @@ function Book(title, author, numPages, hasRead) {
     this.hasRead = hasRead;
 }
 
+Book.prototype.toggleReadStatus = function() {
+    this.hasRead = !this.hasRead;
+}
+
 function addBookToLibrary(title, author, numPages, hasRead) {
     const newBook = new Book(title, author, numPages, hasRead);
     myLibrary.push(newBook);
