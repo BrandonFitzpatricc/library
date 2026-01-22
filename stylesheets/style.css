@@ -27,7 +27,7 @@ body {
 .book-container {
     padding: 25px 50px 100px 25px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, 275px);
+    grid-template-columns: repeat(auto-fill, 275px);
     justify-content: center;
     gap: 50px 125px;
 
@@ -71,9 +71,16 @@ body {
         }
 
         & .read-status-btn {
-            background-image: url("../icons/book-read.svg");
             bottom: 200px;
             left: 232.5px;
+
+            &.has-read {
+                background-image: url("../icons/book-read.svg");
+            }
+
+            &.has-not-read {
+                background-image: url("../icons/book-not-read.svg");
+            }
         }
 
         & .remove-btn {
