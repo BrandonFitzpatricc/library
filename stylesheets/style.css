@@ -178,6 +178,7 @@ body {
                     min-height: 35px;
                     margin-right: 180px;
                     position: relative;
+                    cursor: pointer;
 
                     &:checked::before {
                         content: "✔";
@@ -204,7 +205,7 @@ body {
             }
         }
 
-        & .close-btn {
+        & .close-form-btn {
             background: url("../icons/close-box-outline.svg") center / 45px no-repeat;
             padding: 18px;
             border: none;
@@ -212,6 +213,10 @@ body {
             position: absolute;
             top: 10px;
             right: 10px;
+
+            &:hover {
+                background-image: url("../icons/close-box-filled.svg");
+            }
         }
     }
 }
