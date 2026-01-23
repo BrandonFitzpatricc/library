@@ -67,23 +67,46 @@ myLibrary.forEach(book => book.display());
 const addBookDialog = document.querySelector("#add-book-dialog");
 const addBookForm = document.querySelector("#add-book-form");
 const bookFormBtn = document.querySelector("#book-form-btn");
+const validationFailedMessage = document.querySelector("#validation-failed-message");
 bookFormBtn.addEventListener("click", () => {
     addBookForm.reset();
+    validationFailedMessage.className = "validation-failed-message hidden";
     addBookDialog.showModal();
 });
 
 const submitBookBtn = document.querySelector("#submit-book-btn");
 submitBookBtn.addEventListener("click", (event) => {
-    const title = document.querySelector("#title");
-    const author = document.querySelector("#author");
-    const pages = document.querySelector("#pages");
-    const hasRead = document.querySelector("#read-status");
+    let title = document.querySelector("#title").value;
+    let author = document.querySelector("#author").value;
+    let pages = document.querySelector("#pages").value;
+    let hasRead = document.querySelector("#read-status").checked;
 
-    const allFieldsFilledOut = title.value && author.value && pages.value;
+    // Validation checks: all fields should be filled out, author name cannot only contain
+    // letters, and the max page number limit is 9999
+    const allFieldsFilledOut = title && author && pages;
+    const validAuthor = /^[a-zA-Z]/.test(author);
+    if (pages > 9999) pages = 9999;
     
-    if(allFieldsFilledOut) {
-        addBookToLibrary(title.value, author.value, pages.value, hasRead.checked);
+    if(allFieldsFilledOut && validAuthor) {
+        // Capitalize both the title and the author, if they aren't capitalized already
+        title = title
+                .split(" ")
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+                .join(" ");
+        author = author
+                .split(" ")
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+                .join(" ");
+
+        addBookToLibrary(title, author, pages, hasRead);
         myLibrary.at(-1).display();  
+
+        addBookDialog.close();
+    } else {
+        validationFailedMessage.textContent = !allFieldsFilledOut ?
+                                              "Please fill out missing fields" :
+                                              "The author name can only include letters and spaces";
+        validationFailedMessage.className = "validation-failed-message visible";
     }
 });
 

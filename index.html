@@ -17,27 +17,29 @@
     <button class="add-book-btn" id="book-form-btn">Add Book</button>
 
     <dialog class="add-book-dialog" id="add-book-dialog" closedby="closerequest">
-        <form class="add-book-form" id="add-book-form" action="" method="dialog">
+        <form class="add-book-form" id="add-book-form" action="">
             <div class="form-title">Add New Book</div>
 
             <div class="field">
                 <label for="title">Title</label>
-                <input id="title" type="text" required>
+                <input id="title" type="text">
             </div>
             <div class="field">
                 <label for="author">Author</label>
-                <input id="author" type="text" required>
+                <input id="author" type="text">
             </div>
             <div class="field">
                 <label for="pages"># Pages</label>
-                <input id="pages" type="number" required>
+                <input id="pages" type="number">
             </div>
             <div class="field">
                 <label for="read-status">Have you read this?</label>
                 <input id="read-status" type="checkbox">
             </div>
 
-            <button class="add-book-btn" id="submit-book-btn" type="submit">Add Book</button>
+            <button class="add-book-btn" id="submit-book-btn" type="button">Add Book</button>
+
+            <div class="validation-failed-message hidden" id="validation-failed-message">Please fill out missing fields.</div>
 
             <button class="close-form-btn" id="close-form-btn" type="button"></button>
         </form>

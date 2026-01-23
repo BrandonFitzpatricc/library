@@ -121,7 +121,7 @@ body {
     border: var(--brown-border);;
     border-radius: 10px;
     width: 600px;
-    height: 625px;
+    height: 630px;
     box-shadow:  var(--box-shadow-size) var(--brown);
     justify-self: center;
     align-self: center;
@@ -132,7 +132,7 @@ body {
         text-align: center;
 
         & > div {
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         & .form-title {
@@ -202,6 +202,20 @@ body {
 
             &:active {
                 box-shadow: inset var(--box-shadow-size) var(--brown);
+            }
+        }
+
+        & .validation-failed-message {
+            margin: 25px 0 0 0;
+            font-size: 24px;
+            font-weight: bold;
+
+            &.hidden {
+                visibility: hidden;
+            }
+
+            &.visible {
+                visibility: visible;
             }
         }
 
