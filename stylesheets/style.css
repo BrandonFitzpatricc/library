@@ -9,227 +9,237 @@
 
     --brown-border: 3px solid var(--brown);
     --box-shadow-size: 3px 5px 5px;
+
+    --grid-column-size: 275px;
 }
 
 body {
     font-family: "Times New Roman";
     background-color: var(--beige-primary);
-}
 
-.heading {
-    padding: 35px;
-    background-color: var(--red-primary);
-    font-size: 64px;
-    color: var(--gold-primary);
-    text-align: center;
-}
-
-.book-container {
-    padding: 25px 50px 100px 25px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 275px);
-    justify-content: center;
-    gap: 50px 125px;
-
-    & .book {
-        height: 325px;
+    & .heading {
+        padding: 35px;
         background-color: var(--red-primary);
-        border-left: 45px solid var(--red-secondary);
-        border-radius: 0 15px 15px 0;
-        text-align: center;
+        font-size: 64px;
         color: var(--gold-primary);
-        box-shadow:  var(--box-shadow-size) var(--red-secondary);
-        position: relative;
-
-        & .title {
-            font-weight: bold;
-            margin-top: 45px;
-            font-size: 48px;
-        }
-
-        & .author {
-            font-weight: bold;
-            font-size: 36px;
-            margin-bottom: 25px;
-        }
-
-        & .pages {
-            font-size: 32px;
-        }
-
-        & .book-btn {
-            background: center / 50px no-repeat var(--gold-primary);
-            padding: 30px 35px;
-            border-left: none;
-            border: 2px solid var(--gold-secondary);
-            position: absolute;
-            cursor: pointer;
-
-            &:hover {
-                padding-right: 60px
-            }
-        }
-
-        & .read-status-btn {
-            bottom: 200px;
-            left: 232.5px;
-
-            &.has-read {
-                background-image: url("../icons/book-read.svg");
-            }
-
-            &.has-not-read {
-                background-image: url("../icons/book-not-read.svg");
-            }
-        }
-
-        & .remove-btn {
-            background-image: url("../icons/remove-book.svg");
-            bottom: 100px;
-            left: 232.5px;
-        }
-    }
-
-}
-
-.add-book-btn {
-    background: url("../icons/add-book-filled.svg") left 15px center / 42px no-repeat var(--beige-secondary);
-    font-size: 32px;
-    text-align: right;
-    width: 225px;
-    padding: 10px 25px 10px 0;
-    border-radius: 20px;
-    color: var(--brown);
-    border: var(--brown-border);;
-    box-shadow:  var(--box-shadow-size) var(--brown);
-    cursor: pointer;
-    position: fixed;
-    right: 25px;
-    bottom: 25px;
-
-    &:hover {
-        background-color: var(--beige-primary);
-    }
-
-    &:active {
-        box-shadow: inset var(--box-shadow-size) var(--beige-secondary);
-    }
-}
-
-.add-book-dialog {
-    background-color: var(--beige-secondary);
-    border: var(--brown-border);;
-    border-radius: 10px;
-    width: 600px;
-    height: 630px;
-    box-shadow:  var(--box-shadow-size) var(--brown);
-    justify-self: center;
-    align-self: center;
-
-    & .add-book-form {
-        color: var(--brown);
-        padding: 35px 0;
         text-align: center;
+    }
 
-        & > div {
-            margin-bottom: 30px;
-        }
+    & .book-container {
+        padding: 25px 80px 100px 25px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, var(--grid-column-size));
+        justify-content: center;
+        gap: 50px 96px;
 
-        & .form-title {
-            font-size: 45px;
-        }
-
-        & .field {
-            width: 90%;
-            margin-left: auto;
-            margin-right: auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            & > label {
-                width: 125px;
-                font-size: 32px;
-                text-align: left;
-
-                &[for="read-status"] {
-                    width: 280px;
-                }
-            }
-
-            & > input {
-                background-color: var(--beige-primary);
-                border: var(--brown-border);;
-                box-shadow:  var(--box-shadow-size) var(--brown);
-
-                &[type="text"], &[type="number"] {
-                    width: 80%;
-                    border-radius: 10px;
-                    padding: 9px 15px;
-
-                    &:focus {
-                        outline: 1px solid var(--brown);
-                    }
-                }
-
-                &[type="checkbox"] {
-                    appearance: none;
-                    min-width: 35px;
-                    min-height: 35px;
-                    margin-right: 180px;
-                    position: relative;
-                    cursor: pointer;
-
-                    &:checked::before {
-                        content: "✔";
-                        color: var(--brown);
-                        font-size: 30px;
-                        position: absolute;
-                        left: 3px;
-                    }
-                }
-            }
-        }
-
-        & .add-book-btn {
-            position: static;
-            background-color: var(--beige-primary);
-            background-image: url("../icons/add-book-outline.svg");
-
-            &:hover {
-                background-color: var(--beige-secondary);
-            }
-
-            &:active {
-                box-shadow: inset var(--box-shadow-size) var(--brown);
-            }
-        }
-
-        & .validation-failed-message {
-            margin: 25px 0 0 0;
-            font-size: 24px;
-            font-weight: bold;
-
-            &.hidden {
-                visibility: hidden;
-            }
-
-            &.visible {
-                visibility: visible;
-            }
-        }
-
-        & .close-form-btn {
-            background: url("../icons/close-box-outline.svg") center / 45px no-repeat;
-            padding: 18px;
-            border: none;
-            cursor: pointer;
+        & .book {
+            min-width: 275px;
+            padding: 0 15px;
+            height: 325px;
+            background-color: var(--red-primary);
+            border-left: 45px solid var(--red-secondary);
+            border-radius: 0 15px 15px 0;
+            text-align: center;
+            color: var(--gold-primary);
+            box-shadow:  var(--box-shadow-size) var(--red-secondary);
             position: absolute;
-            top: 10px;
-            right: 10px;
 
-            &:hover {
-                background-image: url("../icons/close-box-filled.svg");
+            &.relatively-positioned {
+                position: relative;
+            }
+
+            & .title {
+                font-weight: bold;
+                margin-top: 45px;
+                font-size: 48px;
+            }
+
+            & .author {
+                font-weight: bold;
+                font-size: 36px;
+                margin-bottom: 25px;
+            }
+
+            & .pages {
+                font-size: 32px;
+            }
+
+            & .book-btn {
+                background: center / 50px no-repeat var(--gold-primary);
+                width: 73px;
+                height: 65px;
+                border-left: none;
+                border: 2px solid var(--gold-secondary);
+                position: absolute;
+                cursor: pointer;
+
+                &:hover {
+                    width: 91px;
+                    right: -93px;
+                }
+            }
+
+            & .read-status-btn {
+                bottom: 200px;
+                right: -75px;
+
+                &.has-read {
+                    background-image: url("../icons/book-read.svg");
+                }
+
+                &.has-not-read {
+                    background-image: url("../icons/book-not-read.svg");
+                }
+            }
+
+            & .remove-btn {
+                background-image: url("../icons/remove-book.svg");
+                bottom: 100px;
+                right: -75px;
+            }
+        }
+
+    }
+
+    & .add-book-btn {
+        background: url("../icons/add-book-filled.svg") left 15px center / 42px no-repeat var(--beige-secondary);
+        font-size: 32px;
+        text-align: right;
+        width: 225px;
+        padding: 10px 25px 10px 0;
+        border-radius: 20px;
+        color: var(--brown);
+        border: var(--brown-border);;
+        box-shadow:  var(--box-shadow-size) var(--brown);
+        cursor: pointer;
+        position: fixed;
+        right: 25px;
+        bottom: 25px;
+
+        &:hover {
+            background-color: var(--beige-primary);
+        }
+
+        &:active {
+            box-shadow: inset var(--box-shadow-size) var(--beige-secondary);
+        }
+    }
+
+    & .add-book-dialog {
+        background-color: var(--beige-secondary);
+        border: var(--brown-border);;
+        border-radius: 10px;
+        width: 600px;
+        height: 630px;
+        box-shadow:  var(--box-shadow-size) var(--brown);
+        justify-self: center;
+        align-self: center;
+
+        & .add-book-form {
+            color: var(--brown);
+            padding: 35px 0;
+            text-align: center;
+
+            & > div {
+                margin-bottom: 30px;
+            }
+
+            & .form-title {
+                font-size: 45px;
+            }
+
+            & .field {
+                width: 90%;
+                margin-left: auto;
+                margin-right: auto;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                & > label {
+                    width: 125px;
+                    font-size: 32px;
+                    text-align: left;
+
+                    &[for="read-status"] {
+                        width: 280px;
+                    }
+                }
+
+                & > input {
+                    background-color: var(--beige-primary);
+                    border: var(--brown-border);;
+                    box-shadow:  var(--box-shadow-size) var(--brown);
+
+                    &[type="text"], &[type="number"] {
+                        width: 80%;
+                        border-radius: 10px;
+                        padding: 9px 15px;
+
+                        &:focus {
+                            outline: 1px solid var(--brown);
+                        }
+                    }
+
+                    &[type="checkbox"] {
+                        appearance: none;
+                        min-width: 35px;
+                        min-height: 35px;
+                        margin-right: 180px;
+                        position: relative;
+                        cursor: pointer;
+
+                        &:checked::before {
+                            content: "✔";
+                            color: var(--brown);
+                            font-size: 30px;
+                            position: absolute;
+                            left: 3px;
+                        }
+                    }
+                }
+            }
+
+            & .add-book-btn {
+                position: static;
+                background-color: var(--beige-primary);
+                background-image: url("../icons/add-book-outline.svg");
+
+                &:hover {
+                    background-color: var(--beige-secondary);
+                }
+
+                &:active {
+                    box-shadow: inset var(--box-shadow-size) var(--brown);
+                }
+            }
+
+            & .validation-failed-message {
+                margin: 25px 0 0 0;
+                font-size: 24px;
+                font-weight: bold;
+
+                &.hidden {
+                    visibility: hidden;
+                }
+
+                &.visible {
+                    visibility: visible;
+                }
+            }
+
+            & .close-form-btn {
+                background: url("../icons/close-box-outline.svg") center / 45px no-repeat;
+                padding: 18px;
+                border: none;
+                cursor: pointer;
+                position: absolute;
+                top: 10px;
+                right: 10px;
+
+                &:hover {
+                    background-image: url("../icons/close-box-filled.svg");
+                }
             }
         }
     }
