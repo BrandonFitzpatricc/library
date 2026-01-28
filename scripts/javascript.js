@@ -1,16 +1,5 @@
 const myLibrary = [];
 
-addBookToLibrary("No Longer Human", "Osamu Dazai", 176, true);
-addBookToLibrary("Playing for the Commandant", "Suzy Zail", 249, false);
-addBookToLibrary("I'm Glad My Mom Died", "Jennette McCurdy", 320, true);
-addBookToLibrary("Franny and Zooey", "JD Salinger", 201, false);
-addBookToLibrary("1984", "George Orwell", 368, true);
-addBookToLibrary("The Bell Jar", "Sylvia Plath", 294, false);
-addBookToLibrary("Death of a Salesman", "Arthur Miller", 144, false);
-addBookToLibrary("American Psycho", "Bret Easton Ellis", 399, false);
-addBookToLibrary("Flowers for Algernon", "Daniel Keyes", 311, true);
-addBookToLibrary("Life of the Party", "Olivia Gatwood", 176, true);
-
 // Storing the width of each book in an array provides a convenient way to access the current 
 // widest and second widest books, which allows for the book grid columns to be resized to
 // the second widest book's width when the first widest book is removed.
@@ -132,8 +121,6 @@ function BookWidth(book, value) {
     this.value = value; 
 }
 
-myLibrary.forEach(book => book.display());
-
 const addBookDialog = document.querySelector("#add-book-dialog");
 const addBookForm = document.querySelector("#add-book-form");
 const bookFormBtn = document.querySelector("#book-form-btn");
@@ -190,3 +177,16 @@ function addBookToLibrary(title, author, pages, hasRead) {
     const newBook = new Book(title, author, pages, hasRead);
     myLibrary.push(newBook);
 }
+
+addBookToLibrary("No Longer Human", "Osamu Dazai", 176, true);
+addBookToLibrary("Playing for the Commandant", "Suzy Zail", 249, false);
+addBookToLibrary("I'm Glad My Mom Died", "Jennette McCurdy", 320, true);
+addBookToLibrary("Franny and Zooey", "JD Salinger", 201, false);
+addBookToLibrary("1984", "George Orwell", 368, true);
+addBookToLibrary("The Bell Jar", "Sylvia Plath", 294, false);
+addBookToLibrary("Death of a Salesman", "Arthur Miller", 144, false);
+addBookToLibrary("American Psycho", "Bret Easton Ellis", 399, false);
+addBookToLibrary("Flowers for Algernon", "Daniel Keyes", 311, true);
+addBookToLibrary("Life of the Party", "Olivia Gatwood", 176, true);
+
+myLibrary.forEach(book => book.display());
