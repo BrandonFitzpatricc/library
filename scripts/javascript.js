@@ -82,7 +82,7 @@ Book.prototype.display = function() {
         if(modifyingGridColumnSize) {
             // Sorting the book widths array provides both a convenient way to remove 
             // the largest width, and a convenient way to retrieve the width of the 
-            // second widest book
+            // second widest book.
             bookWidths.sort((bookWidth1, bookWidth2) => bookWidth1.value - bookWidth2.value);
             bookWidths.pop();
             currentGridColumnSize = bookWidths.at(-1).value;
