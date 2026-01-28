@@ -58,6 +58,8 @@ Book.prototype.display = function() {
         const removedBookObj = myLibrary.splice(myLibrary.findIndex
                                          (book => book.id === removedBookDisplay.dataset.id), 1)[0];
 
+        // The book object associated with each book width is stored with it in the array.
+        // This width would not be retrievable otherwise.
         const removedBookWidth = bookWidths
                                  .find((bookWidth) => bookWidth.book === removedBookObj)
                                  .value;
@@ -96,9 +98,6 @@ Book.prototype.display = function() {
         root.style.setProperty("--grid-column-size", currentGridColumnSize + "px");
     }
 
-    // The book object associated with the width is stored with it. Without this association,
-    // there would be no consistent way to remove a width once its book is removed from the
-    // library, as there would be no way of knowing which width the book corresponds to.
     bookWidths.push(new BookWidth(this, bookWidth));
 
     // Books are initially absolutely positioned so that they ignore the grid content flow
