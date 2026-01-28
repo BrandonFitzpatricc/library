@@ -1,10 +1,10 @@
 const myLibrary = [];
 
-addBookToLibrary("No Longer Human", "Osamu Dazai, Donald Keene", 176, true);
+addBookToLibrary("No Longer Human", "Osamu Dazai", 176, true);
 addBookToLibrary("Playing for the Commandant", "Suzy Zail", 249, false);
 addBookToLibrary("I'm Glad My Mom Died", "Jennette McCurdy", 320, true);
-addBookToLibrary("Franny and Zooey", "J.D. Salinger", 201, false);
-addBookToLibrary("1984", "George Orwell, Thomas Pynchon", 368, true);
+addBookToLibrary("Franny and Zooey", "JD Salinger", 201, false);
+addBookToLibrary("1984", "George Orwell", 368, true);
 addBookToLibrary("The Bell Jar", "Sylvia Plath", 294, false);
 addBookToLibrary("Death of a Salesman", "Arthur Miller", 144, false);
 addBookToLibrary("American Psycho", "Bret Easton Ellis", 399, false);
@@ -155,7 +155,7 @@ submitBookBtn.addEventListener("click", (event) => {
     // Validation checks: all fields should be filled out, author name cannot only contain
     // letters, and the max page number limit is 9999.
     const allFieldsFilledOut = title && author && pages;
-    const validAuthor = /^[a-zA-Z]/.test(author);
+    const validAuthor = /^([a-zA-Z]+\s)*[a-zA-Z]+$/.test(author);
     if (pages > 9999) pages = 9999;
     
     if(allFieldsFilledOut && validAuthor) {
@@ -177,7 +177,7 @@ submitBookBtn.addEventListener("click", (event) => {
     } else {
         validationFailedMessage.textContent = !allFieldsFilledOut ?
                                               "Please fill out missing fields" :
-                                              "The author name can only include letters and spaces";
+                                              "Author name can only include letters and single spaces";
 
         validationFailedMessage.className = "validation-failed-message visible";
     }
