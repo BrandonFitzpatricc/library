@@ -52,11 +52,11 @@ Book.prototype.display = function() {
     removeBtn.className = "book-btn remove-btn";
 
     removeBtn.addEventListener("click", (event) => {
-        const removedBook = event.target.parentNode;
-        bookContainer.removeChild(removedBook);
+        const removedBookDisplay = event.target.parentNode;
+        bookContainer.removeChild(removedBookDisplay);
 
         const removedBookObj = myLibrary.splice(myLibrary.findIndex
-                                         (book => book.id === removedBook.dataset.id), 1)[0];
+                                         (book => book.id === removedBookDisplay.dataset.id), 1)[0];
 
         const removedBookWidth = bookWidths
                                  .find((bookWidth) => bookWidth.book === removedBookObj)
