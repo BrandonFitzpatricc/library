@@ -139,8 +139,8 @@ submitBookBtn.addEventListener("click", (event) => {
     let pages = document.querySelector("#pages").value;
     let hasRead = document.querySelector("#read-status").checked;
 
-    // Validation checks: all fields should be filled out, author name cannot only contain
-    // letters, and the max page number limit is 9999.
+    // Validation checks: all fields should be filled out, author name can only contain
+    // letters/single spaces, and the max page number limit is 9999.
     const allFieldsFilledOut = title && author && pages;
     const validAuthor = /^([a-zA-Z]+\s)*[a-zA-Z]+$/.test(author);
     if (pages > 9999) pages = 9999;
