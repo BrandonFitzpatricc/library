@@ -147,14 +147,11 @@ submitBookBtn.addEventListener("click", (event) => {
     
     if(allFieldsFilledOut && validAuthor) {
         // Capitalize both the title and the author, if they aren't capitalized already.
-        title = title
-                .split(" ")
-                .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-                .join(" ");
+        title = title.charAt(0).toUpperCase() + title.slice(1);
 
         author = author
                 .split(" ")
-                .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1))
                 .join(" ");
 
         addBookToLibrary(title, author, pages, hasRead);
