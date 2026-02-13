@@ -124,9 +124,22 @@ class Book {
     }
 }
 
-function BookWidth(book, value) {
-    this.book = book;
-    this.value = value; 
+class BookWidth {
+    #book;
+    #value;
+    
+    constructor(book, value) {
+        this.#book = book;
+        this.#value = value; 
+    }
+
+    get book() {
+        return this.#book;
+    }
+
+    get value() {
+        return this.#value;
+    }
 }
 
 const addBookDialog = document.querySelector("#add-book-dialog");
