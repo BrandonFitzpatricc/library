@@ -11,109 +11,117 @@ const minGridColumnSize = +getComputedStyle(root)
                           .slice(0, -2);
 let currentGridColumnSize = minGridColumnSize; 
 
-function Book(title, author, pages, hasRead) {
-    this.id = crypto.randomUUID();
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.hasRead = hasRead;
-}
+class Book {
+    #id;
+    #title;
+    #author;
+    #pages;
+    #hasRead;
 
-Book.prototype.display = function() {
-    const bookContainer = document.querySelector("#book-container");
-
-    const book = document.createElement("div");
-    book.className = "book";
-    book.dataset.id = this.id;
-
-    const title = document.createElement("div");
-    title.className = "title"
-    title.textContent = this.title;
-
-    const author = document.createElement("div");
-    author.className = "author";
-    author.textContent = this.author;
-
-    const pages = document.createElement("div");
-    pages.className = "pages";
-    pages.textContent = `${this.pages} pages`;
-
-    const readStatusBtn = document.createElement("button");
-    // The "has-read" and "has-not-read" classes each set corresponding background images
-    // for the button, which are toggled accordingly.
-    readStatusBtn.className = `book-btn read-status-btn ${this.hasRead ? "has-read" : "has-not-read"}`;
-    // The callback function must be bound to "this" in the current context.
-    // Otherwise, when the function is called, the context will change and
-    // "this" will be set to the button that triggered the function rather than 
-    // the object that the function originated from.
-    readStatusBtn.addEventListener("click", this.toggleReadStatus.bind(this));
-
-    const removeBtn = document.createElement("button");
-    removeBtn.className = "book-btn remove-btn";
-
-    removeBtn.addEventListener("click", (event) => {
-        const removedBookDisplay = event.target.parentNode;
-        bookContainer.removeChild(removedBookDisplay);
-
-        const removedBookObj = myLibrary.splice(myLibrary.findIndex
-                                         (book => book.id === removedBookDisplay.dataset.id), 1)[0];
-
-        // Each entry in the book widths array is an object containing both the width of a book,
-        // and the object associated with that book. Without this association, it would not
-        // be possible to retrieve the width of individual books.
-        const removedBookWidth = bookWidths
-                                 .find((bookWidth) => bookWidth.book === removedBookObj)
-                                 .value;
-
-        // When the widest book is removed, the grid columns will be resized to the width of
-        // the second widest book. This ensures that books will not take up more space
-        // than they need to while still maintaining uniformity, making for a more natural
-        // appearance. 
-        const modifyingGridColumnSize = removedBookWidth === currentGridColumnSize && 
-                                        currentGridColumnSize > minGridColumnSize;
-        if(modifyingGridColumnSize) {
-            // Sorting the book widths array provides both a convenient way to remove 
-            // the largest width, and a convenient way to retrieve the width of the 
-            // second widest book.
-            bookWidths.sort((bookWidth1, bookWidth2) => bookWidth1.value - bookWidth2.value);
-            bookWidths.pop();
-            currentGridColumnSize = bookWidths.at(-1).value;
-            root.style.setProperty("--grid-column-size", currentGridColumnSize + "px");
-        } else {
-            bookWidths.splice(bookWidths.findIndex
-                       (bookWidth => bookWidth.value === removedBookWidth), 1);
-        }
-    });
-
-    book.append(title, author, pages, readStatusBtn, removeBtn);
-
-    bookContainer.appendChild(book);
-
-    // If the intrinsic width of the book is larger than the current grid column size, 
-    // then the grid columns will be resized to that width. This is to ensure that
-    // there is no content overflow while maintaining uniform grid column sizing.
-    const bookWidth = +getComputedStyle(book).getPropertyValue("width").slice(0, -2);
-
-    if(bookWidth > currentGridColumnSize) {
-        currentGridColumnSize = bookWidth;
-        root.style.setProperty("--grid-column-size", currentGridColumnSize + "px");
+    constructor(title, author, pages, hasRead) {
+        this.#id = crypto.randomUUID();
+        this.#title = title;
+        this.#author = author;
+        this.#pages = pages;
+        this.#hasRead = hasRead;
     }
 
-    bookWidths.push(new BookWidth(this, bookWidth));
+    display() {
+        const bookContainer = document.querySelector("#book-container");
 
-    // Books are initially absolutely positioned so that they ignore the grid content flow
-    // and maintain their intrinsic width, which is needed for the above calculations. 
-    // Once this width has been obtained and the new grid column size (if any) has been 
-    // calculated, this class will change its positioning to relative so that it is resized
-    // and slotted into the grid accordingly.
-    book.className += " relatively-positioned";
-}
+        const book = document.createElement("div");
+        book.className = "book";
+        book.dataset.id = this.#id;
 
-Book.prototype.toggleReadStatus = function(event) {
-    this.hasRead = !this.hasRead;
-    // The "has-read" and "has-not-read" classes each set corresponding background images
-    // for the button, which are toggled accordingly.
-    event.target.className = `book-btn read-status-btn ${this.hasRead ? "has-read" : "has-not-read"}`;
+        const title = document.createElement("div");
+        title.className = "title"
+        title.textContent = this.#title;
+
+        const author = document.createElement("div");
+        author.className = "author";
+        author.textContent = this.#author;
+
+        const pages = document.createElement("div");
+        pages.className = "pages";
+        pages.textContent = `${this.#pages} pages`;
+
+        const readStatusBtn = document.createElement("button");
+        // The "has-read" and "has-not-read" classes each set corresponding background images
+        // for the button, which are toggled accordingly.
+        readStatusBtn.className = `book-btn read-status-btn ${this.#hasRead ? "has-read" : "has-not-read"}`;
+        // The callback function must be bound to "this" in the current context.
+        // Otherwise, when the function is called, the context will change and
+        // "this" will be set to the button that triggered the function rather than 
+        // the object that the function originated from.
+        readStatusBtn.addEventListener("click", this.toggleReadStatus.bind(this));
+
+        const removeBtn = document.createElement("button");
+        removeBtn.className = "book-btn remove-btn";
+
+        removeBtn.addEventListener("click", (event) => {
+            const removedBookDisplay = event.target.parentNode;
+            bookContainer.removeChild(removedBookDisplay);
+
+            const removedBookObj = myLibrary.splice(myLibrary.findIndex
+                                            (book => book.#id === removedBookDisplay.dataset.id), 1)[0];
+
+            // Each entry in the book widths array is an object containing both the width of a book,
+            // and the object associated with that book. Without this association, it would not
+            // be possible to retrieve the width of individual books.
+            const removedBookWidth = bookWidths
+                                    .find((bookWidth) => bookWidth.book === removedBookObj)
+                                    .value;
+
+            // When the widest book is removed, the grid columns will be resized to the width of
+            // the second widest book. This ensures that books will not take up more space
+            // than they need to while still maintaining uniformity, making for a more natural
+            // appearance. 
+            const modifyingGridColumnSize = removedBookWidth === currentGridColumnSize && 
+                                            currentGridColumnSize > minGridColumnSize;
+            if(modifyingGridColumnSize) {
+                // Sorting the book widths array provides both a convenient way to remove 
+                // the largest width, and a convenient way to retrieve the width of the 
+                // second widest book.
+                bookWidths.sort((bookWidth1, bookWidth2) => bookWidth1.value - bookWidth2.value);
+                bookWidths.pop();
+                currentGridColumnSize = bookWidths.at(-1).value;
+                root.style.setProperty("--grid-column-size", currentGridColumnSize + "px");
+            } else {
+                bookWidths.splice(bookWidths.findIndex
+                        (bookWidth => bookWidth.value === removedBookWidth), 1);
+            }
+        });
+
+        book.append(title, author, pages, readStatusBtn, removeBtn);
+
+        bookContainer.appendChild(book);
+
+        // If the intrinsic width of the book is larger than the current grid column size, 
+        // then the grid columns will be resized to that width. This is to ensure that
+        // there is no content overflow while maintaining uniform grid column sizing.
+        const bookWidth = +getComputedStyle(book).getPropertyValue("width").slice(0, -2);
+
+        if(bookWidth > currentGridColumnSize) {
+            currentGridColumnSize = bookWidth;
+            root.style.setProperty("--grid-column-size", currentGridColumnSize + "px");
+        }
+
+        bookWidths.push(new BookWidth(this, bookWidth));
+
+        // Books are initially absolutely positioned so that they ignore the grid content flow
+        // and maintain their intrinsic width, which is needed for the above calculations. 
+        // Once this width has been obtained and the new grid column size (if any) has been 
+        // calculated, this class will change its positioning to relative so that it is resized
+        // and slotted into the grid accordingly.
+        book.className += " relatively-positioned";
+    }
+
+    toggleReadStatus(event) {
+        this.#hasRead = !this.#hasRead;
+        // The "has-read" and "has-not-read" classes each set corresponding background images
+        // for the button, which are toggled accordingly.
+        event.target.className = `book-btn read-status-btn ${this.hasRead ? "has-read" : "has-not-read"}`;
+    }
 }
 
 function BookWidth(book, value) {
