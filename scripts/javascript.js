@@ -120,7 +120,7 @@ class Book {
         this.#hasRead = !this.#hasRead;
         // The "has-read" and "has-not-read" classes each set corresponding background images
         // for the button, which are toggled accordingly.
-        event.target.className = `book-btn read-status-btn ${this.hasRead ? "has-read" : "has-not-read"}`;
+        event.target.className = `book-btn read-status-btn ${this.#hasRead ? "has-read" : "has-not-read"}`;
     }
 }
 
